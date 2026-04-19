@@ -19,8 +19,35 @@ connectDB();
 app.use(helmet());
 
 // CORS configuration
+const allowedOrigins = (process.env.FRONTEND_URL || '')
+  .split(',')
+  .map((origin) => origin.trim().replace(/\/$/, ''))
+  .filter(Boolean);
+const devOrigin = 'http://localhost:5173';
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    // Allow non-browser requests (no Origin header) and any explicitly configured frontend origin.
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const normalizedOrigin = origin.replace(/\/$/, '');
+
+    if (allowedOrigins.includes('*') || allowedOrigins.includes(normalizedOrigin)) {
+      return callback(null, true);
+    }
+
+    if (process.env.NODE_ENV !== 'production' && origin === devOrigin) {
+      return callback(null, true);
+    }
+
+    if (process.env.NODE_ENV === 'production' && allowedOrigins.length === 0) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: false,
