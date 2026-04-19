@@ -9,6 +9,9 @@ const chatRoutes = require('./routes/chat');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy for Vercel
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 
