@@ -1,0 +1,81 @@
+COGNITIA ROUND – 2 PROJECT SUBMISSION
+Full-Stack Conversational AI Project
+Objective
+Build a full-stack web application that allows users to interact with an AI-powered assistant in a conversational format.
+The system should:
+• Accept a user query
+• Send it to an AI model via API
+• Display the response in a clean user interface
+Tech Stack Requirements
+Backend
+• Use Bun / Node.js with Express
+• Integrate Groq API
+• Model to use: llama-3.1-8b-instant (free tier)
+• Connect to MongoDB Atlas for storing data.
+Frontend
+Use Vite with Bun / React
+Build a UI that supports:
+• Inputting a question
+• Displaying the AI-generated answer
+Project Structure
+Organize your project into two separate folders:
+/frontend → Client-side application
+/backend → Server-side application
+Both folders must exist inside the same repository
+Functional Requirements
+The application should:
+• Accept one question at a time
+• Display one response per query
+• NOT maintain continuous chat history
+Store the following in MongoDB Atlas:
+• User question
+• AI response
+Deployment
+Deployment requirements:
+• Deploy frontend separately on Vercel
+• Deploy backend separately on Vercel
+• Treat both as independent Vercel projects
+• Both folders must be inside a single GitHub/GitLab repository connected to Vercel
+Documentation Requirements
+Include a properly written README.md containing:
+• Project overview
+• Setup instructions
+• Tech stack explanation
+• Deployment steps
+• API usage details
+Optional (Not Mandatory)
+You may optionally:
+• Dockerize frontend
+• Dockerize backend
+• Create a docker-compose.yml file to run the complete system
+
+
+Additional Requirement (Important)
+If you used AI-assisted development tools (vibe-coding tools), include a file:
+vibecoded.md
+This file should contain:
+• List of vibe-coding tools used
+• Supporting configurations (if applicable)
+Important Constraints
+Follow these strictly:
+• Only single question → single response per interaction
+• No extra marks for implementing continuous conversations
+• Focus on:
+○ Clean architecture
+○ Deployment
+○ Security practices
+Evaluation Criteria
+Projects will be evaluated based on:
+• Code structure and clarity
+• Correct API integration
+• Deployment success
+• Security practices
+• Documentation quality
+• Git commit log quality
+No Additional Marks Will Be Given For
+The following features will NOT receive extra credit:
+• Continuous chat
+• Memory
+• Responsive UI
+• File organization
+• Authentication
