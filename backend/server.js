@@ -12,8 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Trust proxy for Vercel
 app.set('trust proxy', 1);
 
-// Connect to MongoDB
-connectDB();
+// Don't connect to MongoDB here - connect per request in serverless
 
 // Security middleware
 app.use(helmet());

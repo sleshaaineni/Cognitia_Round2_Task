@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Groq = require('groq-sdk');
 const Conversation = require('../models/Conversation');
+const connectDB = require('../config/db');
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY
@@ -9,6 +10,9 @@ const groq = new Groq({
 
 router.post('/', async (req, res) => {
   try {
+    // Connect to MongoDB for this request
+    await connectDB();
+    
     const { question } = req.body;
 
     // Validate input
